@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AyubArbievQualityAssurance2", "AyubArbievQualityAssurance2\AyubArbievQualityAssurance2.csproj", "{6C90EA97-E86A-4059-A5A3-94A7210E33B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QualityAssurance2.Data", "AyubArbievQualityAssurance2\QualityAssurance2.Data.csproj", "{6C90EA97-E86A-4059-A5A3-94A7210E33B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
