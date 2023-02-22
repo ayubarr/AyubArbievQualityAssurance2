@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QualityAssurance2.Data", "AyubArbievQualityAssurance2\QualityAssurance2.Data.csproj", "{6C90EA97-E86A-4059-A5A3-94A7210E33B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QualityAssurance2.CMD", "QualityAssurance2.CMD\QualityAssurance2.CMD.csproj", "{58E6C773-D63F-423E-895B-C73077222EA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6C90EA97-E86A-4059-A5A3-94A7210E33B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C90EA97-E86A-4059-A5A3-94A7210E33B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C90EA97-E86A-4059-A5A3-94A7210E33B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58E6C773-D63F-423E-895B-C73077222EA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58E6C773-D63F-423E-895B-C73077222EA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58E6C773-D63F-423E-895B-C73077222EA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58E6C773-D63F-423E-895B-C73077222EA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AyubArbievQualityAssurance2.Data.Models.Common
 {
-    internal class BaseEntity
+    public abstract class BaseEntity
     {
+        public int Id { get; set; }
     }
 }
