@@ -12,38 +12,35 @@ namespace QualityAssurance2.Data.Repositories.Implementations
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly AppDbContext _context;
+        private readonly AppDbContext ContextDb;
 
         public Repository(AppDbContext context)
         {
-            _context = context;
+            ContextDb = context;
         }
         public T Add(T item)
         {
-            DbSet<T> dbSet = _context.Set<T>();
+            DbSet<T> dbSet = ContextDb.Set<T>();
 
             if (dbSet == default(DbSet<T>))
                 return default(T);
 
             T result = dbSet.Add(item).Entity;
-            _context.SaveChanges();
+            ContextDb.SaveChanges();
 
             return result;
         }
 
         public void Delete(T item)
         {
-            DbSet<T> dbSet = _context.Set<T>();
-            if (dbSet == default(DbSet<T>))
-                return;
-
-            dbSet.Remove(item);
-            _context.SaveChanges();
+            ExistenceCheck();
+            ContextDb.Set<T>().Remove(item);
+            ContextDb.SaveChanges();
         }
 
         public List<T> GetAll()
         {
-            DbSet<T> dbSet = _context.Set<T>();
+            DbSet<T> dbSet = ContextDb.Set<T>();
 
             if (dbSet == default(DbSet<T>))
                 return default(List<T>);
@@ -53,7 +50,7 @@ namespace QualityAssurance2.Data.Repositories.Implementations
 
         public T GetById(int id)
         {
-            DbSet<T> dbSet = _context.Set<T>();
+            DbSet<T> dbSet = ContextDb.Set<T>();
             if (dbSet == default(DbSet<T>))
                 return default(T);
 
@@ -63,14 +60,18 @@ namespace QualityAssurance2.Data.Repositories.Implementations
 
         public void Update(T Item)
         {
-            DbSet<T> dbSet = _context.Set<T>();
-            if (dbSet == default(DbSet<T>))
-                return;
-
+            DbSet<T> dbSet  = ExistenceCheck();
             dbSet.Update(Item);
-            _context.SaveChanges();
+            ContextDb.SaveChanges();
         }
-        
-        
+        public DbSet<T> ExistenceCheck()
+        {
+            DbSet<T> TestSet = ContextDb.Set<T>();
+            if (TestSet == default(DbSet<T>))
+                return null;
+
+            return TestSet;
+        }
+
     }
 }
