@@ -2,11 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using QualityAssurance2.Data.DataBase.SqlServer;
 using QualityAssurance2.Data.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QualityAssurance2.Data.Repositories.Implementations
 {
@@ -51,18 +46,18 @@ namespace QualityAssurance2.Data.Repositories.Implementations
 
         public T GetById(int id)
         {
-            if (DataBaseExist())return default(T);
+            if (DataBaseExist()) return default(T);
             T entity = ContextDb.Set<T>().FirstOrDefault(z => z.Id.Equals(id));
             return entity;
         }
 
         public void Update(T Item)
         {
-            if (DataBaseExist())return;
+            if (DataBaseExist()) return;
             ContextDb.Set<T>().Update(Item);
             ContextDb.SaveChanges();
         }
-      
+
 
     }
 }
