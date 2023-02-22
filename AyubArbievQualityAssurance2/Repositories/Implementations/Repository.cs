@@ -33,7 +33,7 @@ namespace QualityAssurance2.Data.Repositories.Implementations
 
         public void Delete(T item)
         {
-            ExistenceCheck();
+            DataBaseExist();
             ContextDb.Set<T>().Remove(item);
             ContextDb.SaveChanges();
         }
@@ -60,17 +60,16 @@ namespace QualityAssurance2.Data.Repositories.Implementations
 
         public void Update(T Item)
         {
-            DbSet<T> dbSet  = ExistenceCheck();
-            dbSet.Update(Item);
+            DataBaseExist();
+            ContextDb.Set<T>().Update(Item);
             ContextDb.SaveChanges();
         }
-        public DbSet<T> ExistenceCheck()
+        public void DataBaseExist()
         {
+      
             DbSet<T> TestSet = ContextDb.Set<T>();
             if (TestSet == default(DbSet<T>))
-                return null;
-
-            return TestSet;
+                throw new Exception("Invalid");
         }
 
     }
