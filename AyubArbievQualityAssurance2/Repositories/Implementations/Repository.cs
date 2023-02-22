@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace QualityAssurance2.Data.Repositories.Implementations
 {
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class Repository<T> : IExist, IRepository<T> where T : BaseEntity
     {
         private readonly AppDbContext ContextDb;
 
@@ -18,59 +18,51 @@ namespace QualityAssurance2.Data.Repositories.Implementations
         {
             ContextDb = context;
         }
+
+        public bool DataBaseExist()
+        {
+            DbSet<T> TestSet = ContextDb.Set<T>();
+            if (TestSet == default(DbSet<T>))
+                return true;
+
+            return false;
+        }
+
         public T Add(T item)
         {
-            DbSet<T> dbSet = ContextDb.Set<T>();
-
-            if (dbSet == default(DbSet<T>))
-                return default(T);
-
-            T result = dbSet.Add(item).Entity;
+            if (DataBaseExist()) return default(T);
+            T result = ContextDb.Set<T>().Add(item).Entity;
             ContextDb.SaveChanges();
-
             return result;
         }
 
         public void Delete(T item)
         {
-            DataBaseExist();
+            if (DataBaseExist()) return;
             ContextDb.Set<T>().Remove(item);
             ContextDb.SaveChanges();
         }
 
         public List<T> GetAll()
         {
-            DbSet<T> dbSet = ContextDb.Set<T>();
-
-            if (dbSet == default(DbSet<T>))
-                return default(List<T>);
-
-            return dbSet.ToList();
+            if (DataBaseExist()) return default(List<T>);
+            return ContextDb.Set<T>().ToList();
         }
 
         public T GetById(int id)
         {
-            DbSet<T> dbSet = ContextDb.Set<T>();
-            if (dbSet == default(DbSet<T>))
-                return default(T);
-
-            T entity = dbSet.FirstOrDefault(z => z.Id.Equals(id));
+            if (DataBaseExist())return default(T);
+            T entity = ContextDb.Set<T>().FirstOrDefault(z => z.Id.Equals(id));
             return entity;
         }
 
         public void Update(T Item)
         {
-            DataBaseExist();
+            if (DataBaseExist())return;
             ContextDb.Set<T>().Update(Item);
             ContextDb.SaveChanges();
         }
-        public void DataBaseExist()
-        {
       
-            DbSet<T> TestSet = ContextDb.Set<T>();
-            if (TestSet == default(DbSet<T>))
-                throw new Exception("Invalid");
-        }
 
     }
 }
