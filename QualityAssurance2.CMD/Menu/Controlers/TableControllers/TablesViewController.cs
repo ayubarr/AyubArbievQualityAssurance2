@@ -35,19 +35,19 @@ namespace QualityAssurance2.CMD.Menu.Controlers.Tables
             Console.WriteLine("Clients Table:\n" +
                 "ID|FirstName|LastName|PhoneNum|OrderAmount|DateAdd|");
             foreach (var client in clients)
-                Console.WriteLine($"{client.Id}|" +
+                Console.WriteLine($" {client.Id}|" +
                     $"{client.FirstName}|" +
                     $"{client.LastName}|" +
                     $"{client.PhoneNum}|" +
                     $"{client.OrderAmount}|" +
-                    $"{client.DateAdd}\n");
+                    $"{client.DateAdd}|\n");
         }
         private static void OrdersTable(List<Order> orders)
         {
             Console.WriteLine("Orders Table:\n" +
-               "ID| OrderPrice |OrderDate |CloseDate |Client |ClientId");
+               "ID| OrderPrice |OrderDate |CloseDate |Client |ClientId|");
             foreach (var order in orders)
-                Console.WriteLine($"{order.Id}|" +
+                Console.WriteLine($" {order.Id}|" +
                     $"{order.OrderPrice}|" +
                     $"{order.OrderDate}|" +
                     $"{order.CloseDate}|" +

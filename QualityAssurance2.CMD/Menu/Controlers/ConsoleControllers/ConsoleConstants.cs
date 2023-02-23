@@ -2,6 +2,6 @@
 {
     public static class ConsoleConstants
     {
-        public static string DatePattern = "dd/MM/yyyy";
+        public static string DateTimePattern = "dd/MM/yyyy hh/mm/ss";
     }
 }

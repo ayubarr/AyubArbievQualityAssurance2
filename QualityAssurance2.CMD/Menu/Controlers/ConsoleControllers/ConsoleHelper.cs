@@ -20,7 +20,7 @@
         {
             string value = GetStringFromConsole(fieldName);
             return DateTime
-                .ParseExact(value, ConsoleConstants.DatePattern, null);
+                .ParseExact(value, ConsoleConstants.DateTimePattern, null);
         }
         public static float GetFloatFromConsole(string fieldName)
         {

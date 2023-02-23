@@ -28,7 +28,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
 
             }
         }
-        public static T AddEntity()
+        public static T GetEntityFromConsole()
         {
             if (typeof(T) == typeof(Client))
                 return (T)(object)GetClientFromConsole();
@@ -39,13 +39,13 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             return default(T);
         }
 
-        private static Client GetClientFromConsole()
+        public static Client GetClientFromConsole()
         {
             Console.WriteLine("Let's Add a Client!");
             string clientFirstName = ConsoleReader<string>.Read("client FirstName");
             string clientLastName = ConsoleReader<string>.Read("client LastName");
             string phoneNum = ConsoleReader<string>.Read("client Phone Number");           
-            DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DatePattern}");
+            DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
 
             Client client = new Client()
             {
@@ -57,15 +57,20 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             };
             return client;
         }
-        private static Order GetOrderFromConsole()
+        public static Order GetOrderFromConsole()
         {            
             Console.WriteLine("Let's create a order!");
             List<Client> allClients = TablesViewController<Client>.GetTable();
             float orderPrice = ConsoleReader<float>.Read("order price");
-            DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DatePattern}");
-            DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DatePattern}");
+            DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
+            DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DateTimePattern}");
             int clientId = ConsoleReader<int>.Read($"сlient Id. total clients  {allClients.Count}");
             Client client = GetClientById(clientId);
+            if(client == default(T))
+            {
+                Console.WriteLine($"Client with ID {clientId} not found");
+                return null;
+            }
             string description = ConsoleReader<string>.Read("description of product");
 
             Order order = new Order()
@@ -80,13 +85,13 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             };
             return order;
         }
-        private static Client GetClientById(int id)
+        public static Client GetClientById(int id)
         {
             using (AppDbContext dataBase = new AppDbContext())
             {
                 Repository<Client> repository = new Repository<Client>(dataBase);
-                Client entity = repository.GetById(id);
-                return entity;
+                Client client = repository.GetById(id);
+                return client;
             }
         }
     }

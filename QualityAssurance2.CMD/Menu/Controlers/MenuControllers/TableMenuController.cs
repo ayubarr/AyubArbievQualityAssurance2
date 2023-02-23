@@ -18,13 +18,13 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     Console.Clear();
                     if (typeof(T) == typeof(Client))
                     {
-                        Client client = AddController<Client>.AddEntity();
+                        Client client = AddController<Client>.GetEntityFromConsole();
                         AddController<Client>.AddEntityToDb(client);
                     }
 
                     if (typeof(T) == typeof(Order))
                     {
-                       Order order = AddController<Order>.AddEntity();
+                       Order order = AddController<Order>.GetEntityFromConsole();
                        AddController<Order>.AddEntityToDb(order);
                     }
 
@@ -32,6 +32,18 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 
                 case "2":
                     Console.Clear();
+                    if(typeof(T) == typeof(Client))
+                    {
+                        Client client = EditController<Client>.SetUpdateEntity();
+                        //TODO: Здесь эта сущность должна сначала удалиться из бд, потом перезаписаться
+                    }
+                    if(typeof(T) == typeof(Order))
+                    {
+                        Order order = EditController<Order>.SetUpdateEntity();
+
+                    }
+
+
                     break;
 
                 case "3":
