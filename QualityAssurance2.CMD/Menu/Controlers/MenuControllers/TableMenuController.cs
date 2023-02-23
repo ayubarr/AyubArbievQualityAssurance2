@@ -70,10 +70,10 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
             Console.WriteLine(
                 "[1] - Add\n" +
                "[2] - Edit \n" +
-               "[3] - Delete)" +
-               "[4] - Show client’s orders" +
-               "[Back] - Return)" +
-               "[Esc] - Exit"
+               "[3] - Delete\n" +
+               "[4] - Show client’s orders\n" +
+               "[Back] - Return\n" +
+               "[Esc] - Exit\n"
                );
         }
     }

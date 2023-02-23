@@ -33,26 +33,26 @@ namespace QualityAssurance2.CMD.Menu.Controlers.Tables
         private static void ClientsTable(List<Client> clients)
         {
             Console.WriteLine("Clients Table:\n" +
-                "ID|    FirstName   |   LastName   |   PhoneNum   |   OrderAmount   |   DateAdd   |");
+                "ID|FirstName|LastName|PhoneNum|OrderAmount|DateAdd|");
             foreach (var client in clients)
-                Console.WriteLine($"{client.Id}|    " +
-                    $"{client.FirstName}   |   " +
-                    $"{client.LastName}   |   " +
-                    $"{client.PhoneNum}   |   " +
-                    $"{client.OrderAmount}   |   " +
+                Console.WriteLine($"{client.Id}|" +
+                    $"{client.FirstName}|" +
+                    $"{client.LastName}|" +
+                    $"{client.PhoneNum}|" +
+                    $"{client.OrderAmount}|" +
                     $"{client.DateAdd}\n");
         }
         private static void OrdersTable(List<Order> orders)
         {
             Console.WriteLine("Orders Table:\n" +
-               "ID|    OrderPrice   |   OrderDate   |   CloseDate   |   Client   |   ClientId   |");
+               "ID| OrderPrice |OrderDate |CloseDate |Client |ClientId");
             foreach (var order in orders)
                 Console.WriteLine($"{order.Id}|" +
-                    $"    {order.OrderPrice}   |" +
-                    $"   {order.OrderDate}   |" +
-                    $"   {order.CloseDate}   |" +
-                    $"   {order.Client}   |" +
-                    $"   {order.ClientId}   |\n" +
+                    $"{order.OrderPrice}|" +
+                    $"{order.OrderDate}|" +
+                    $"{order.CloseDate}|" +
+                    $"{order.Client}|" +
+                    $"{order.ClientId}|\n" +
                     $"Description: {order.Description}\n");
         }
     }
