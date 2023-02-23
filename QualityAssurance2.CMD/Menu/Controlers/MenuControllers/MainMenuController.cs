@@ -16,12 +16,14 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     Console.Clear();
                     List<Client> clients = TablesViewController<Client>.GetTable();
                     TablesViewController<Client>.ViewTable(clients);
+                    TableMenuController<Client>.TableMenuButtons();
                     break;
 
                 case "2":
                     Console.Clear();
                     List<Order> orders = TablesViewController<Order>.GetTable();
                     TablesViewController<Order>.ViewTable(orders);
+                    TableMenuController<Order>.TableMenuButtons();
                     break;
 
                 case "Escape":
