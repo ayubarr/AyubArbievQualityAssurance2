@@ -1,28 +1,27 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Entities;
-using QualityAssurance2.Data.Repositories.Implementations;
-using QualityAssurance2.Data.Repositories.Interfaces;
+using QualityAssurance2.CMD.Menu.Controlers.Tables;
 
-namespace QualityAssurance2.CMD.Menu.Controlers
+namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 {
     public static class MenuController
     {
         public static void MainMenuButtons()
         {
-  
+
             ViewMainMenuInfo();
             string choice = ClickCheck();
             switch (choice)
             {
                 case "1":
                     Console.Clear();
-                    List<Client> clients = TablesController<Client>.GetTable();
-                    TablesController<Client>.ViewTable(clients);
+                    List<Client> clients = TablesViewController<Client>.GetTable();
+                    TablesViewController<Client>.ViewTable(clients);
                     break;
 
                 case "2":
                     Console.Clear();
-                    List<Order> orders = TablesController<Order>.GetTable();
-                    TablesController<Order>.ViewTable(orders);
+                    List<Order> orders = TablesViewController<Order>.GetTable();
+                    TablesViewController<Order>.ViewTable(orders);
                     break;
 
                 case "Escape":
@@ -32,7 +31,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers
         }
         private static string ClickCheck()
         {
-            
+
             string[] keys = new string[]
             {
                     "1",

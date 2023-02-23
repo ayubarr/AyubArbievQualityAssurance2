@@ -1,4 +1,4 @@
-﻿namespace QualityAssurance2.CMD.Menu.Controlers
+﻿namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 {
     public static class ButtonController
     {
