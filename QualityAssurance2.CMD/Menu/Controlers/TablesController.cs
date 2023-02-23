@@ -23,17 +23,32 @@ namespace QualityAssurance2.CMD.Menu.Controlers
         }
 
         public static void ViewTable(List<T> list) {
-            Console.WriteLine("Orders Table: ");
-            if(typeof(Client) == typeof(T))
+            if(typeof(T)  == typeof(Client))
             {
-              
+               List<Client> clients = list.Cast<Client>().ToList();
+               ClientsTable(clients);
             }
-            if(typeof(Order) == typeof(T) )
+            if(typeof(T)  == typeof(Order))
             {
-
+                List<Order> orders = list.Cast<Order>().ToList();
+                OrdersTable(orders);
             }
-            
         }
-
+        private static void ClientsTable(List<Client> clients)
+        {
+            Console.WriteLine("Clients Table:\n" +
+                "ID|    FirstName   |   LastName   |   PhoneNum   |   OrderAmount   |");
+            foreach (var client in clients)
+                Console.WriteLine($"{client.Id}|    {client.FirstName}   |   {client.LastName}   |   {client.PhoneNum}   |   {client.OrderAmount}   |");
+        }
+        private static void OrdersTable(List<Order> orders)
+        {
+            Console.WriteLine("Orders Table:\n" +
+               "ID|    OrderPrice   |   OrderDate   |   CloseDate   |   Client   |   ClientId   |");
+            foreach (var order in orders)
+                Console.WriteLine($"{order.Id}   |    {order.OrderPrice}   |   {order.OrderDate}   |" +
+                    $"   {order.CloseDate}   |   {order.Client}   |   {order.ClientId}   |\n" +
+                    $"Description: {order.Description}\n");
+        }
     }
 }
