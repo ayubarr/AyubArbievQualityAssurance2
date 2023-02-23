@@ -3,7 +3,7 @@ using QualityAssurance2.CMD.Menu.Controlers.Tables;
 
 namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 {
-    public static class MenuController
+    public static class MainMenuController
     {
         public static void MainMenuButtons()
         {

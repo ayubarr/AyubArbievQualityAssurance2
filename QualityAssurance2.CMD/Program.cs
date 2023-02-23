@@ -1,4 +1,5 @@
-﻿using QualityAssurance2.CMD.Menu.Controlers.MainMenu;
+﻿
+using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
 
 MainMenuController.MainMenuButtons();
 
