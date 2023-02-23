@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+
+
+using QualityAssurance2.CMD.Menu.Controlers;
+
+MenuController.MainMenuButtons();
+

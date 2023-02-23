@@ -1,9 +1,4 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AyubArbievQualityAssurance2.Data.Models.Entities
 {
@@ -16,7 +11,7 @@ namespace AyubArbievQualityAssurance2.Data.Models.Entities
         public string Description { get; set; }
         public float OrderPrice { get; set; }
         public DateTime CloseDate { get; set; }
-        public ICollection<Order> Orders { get; set; }
+
 
     }
 }

@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AyubArbievQualityAssurance2\QualityAssurance2.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Menu\Interfaces\" />
+  </ItemGroup>
+
 </Project>
