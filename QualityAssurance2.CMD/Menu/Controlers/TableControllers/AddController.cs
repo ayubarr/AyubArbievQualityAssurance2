@@ -10,7 +10,25 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
 {
     public static class AddController<T> where T : BaseEntity
     {
-        public static T CheckEntityType()
+        public static void AddEntityToDb(T entity)
+        {
+            using (AppDbContext dataBase = new AppDbContext())
+            {
+                Repository<T> repository = new Repository<T>(dataBase);
+                if (typeof(T) == typeof(Client))
+                {
+                    Client client = (Client)(object)entity;
+                    repository.Add((T)(object)client);
+                }
+                if (typeof(T) == typeof(Order))
+                {
+                    Order order = (Order)(object)entity;
+                    repository.Add((T)(object)order);
+                }
+
+            }
+        }
+        public static T AddEntity()
         {
             if (typeof(T) == typeof(Client))
                 return (T)(object)GetClientFromConsole();
@@ -26,8 +44,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Console.WriteLine("Let's Add a Client!");
             string clientFirstName = ConsoleReader<string>.Read("client FirstName");
             string clientLastName = ConsoleReader<string>.Read("client LastName");
-            string phoneNum = ConsoleReader<string>.Read("client Phone Number");
-            
+            string phoneNum = ConsoleReader<string>.Read("client Phone Number");           
             DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DatePattern}");
 
             Client client = new Client()
@@ -41,19 +58,15 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             return client;
         }
         private static Order GetOrderFromConsole()
-        {
-            Console.WriteLine("Orders Table:\n" +
-              "ID|    OrderPrice   |   OrderDate   |   CloseDate   |   Client   |   ClientId   |");
-
-            List<Client> allClients = TablesViewController<Client>.GetTable();
+        {            
             Console.WriteLine("Let's create a order!");
+            List<Client> allClients = TablesViewController<Client>.GetTable();
             float orderPrice = ConsoleReader<float>.Read("order price");
             DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DatePattern}");
             DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DatePattern}");
             int clientId = ConsoleReader<int>.Read($"сlient Id. total clients  {allClients.Count}");
             Client client = GetClientById(clientId);
             string description = ConsoleReader<string>.Read("description of product");
-
 
             Order order = new Order()
             {
@@ -76,6 +89,5 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                 return entity;
             }
         }
-
     }
 }

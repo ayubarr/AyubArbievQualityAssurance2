@@ -1,4 +1,6 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
+using AyubArbievQualityAssurance2.Data.Models.Entities;
+using QualityAssurance2.CMD.Menu.Controlers.TableControllers;
 
 namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 {
@@ -14,6 +16,17 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
             {
                 case "1":
                     Console.Clear();
+                    if (typeof(T) == typeof(Client))
+                    {
+                        Client client = AddController<Client>.AddEntity();
+                        AddController<Client>.AddEntityToDb(client);
+                    }
+
+                    if (typeof(T) == typeof(Order))
+                    {
+                       Order order = AddController<Order>.AddEntity();
+                       AddController<Order>.AddEntityToDb(order);
+                    }
 
                     break;
 
