@@ -65,13 +65,15 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
             DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DateTimePattern}");
             int clientId = ConsoleReader<int>.Read($"сlient Id. total clients  {allClients.Count}");
-            Client client = GetClientById(clientId);
+            Client client = ReadByIdController.GetClientById(clientId);
             if(client == default(T))
             {
                 Console.WriteLine($"Client with ID {clientId} not found");
                 return null;
             }
             string description = ConsoleReader<string>.Read("description of product");
+           
+            client.OrderAmount++;
 
             Order order = new Order()
             {
@@ -84,15 +86,6 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                 
             };
             return order;
-        }
-        public static Client GetClientById(int id)
-        {
-            using (AppDbContext dataBase = new AppDbContext())
-            {
-                Repository<Client> repository = new Repository<Client>(dataBase);
-                Client client = repository.GetById(id);
-                return client;
-            }
         }
     }
 }
