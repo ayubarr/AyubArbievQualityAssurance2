@@ -20,29 +20,16 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     if (typeof(T) == typeof(Client))
                     {
                         Client client = AddController<Client>.GetEntityFromConsole();
-                        if(client != null)
-                        {
-                            AddController<Client>.AddEntityToDb(client);
-                        }
-                        else
-                        {
-                            Back();
-                        }
+                        if(client != null) AddController<Client>.AddEntityToDb(client);
+                        else Back();
                     }
 
                     if (typeof(T) == typeof(Order))
                     {
                         Order order = AddController<Order>.GetEntityFromConsole();
-                        if(order != null)
-                        {
-                            AddController<Order>.AddEntityToDb(order);
-                        }
-                        else
-                        {
-                            Back();
-                        }
+                        if(order != null) AddController<Order>.AddEntityToDb(order);
+                        else Back();
                     }
-
                     break;
 
                 case "2":
@@ -55,10 +42,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                             Client newClient = EditController<Client>.EditEntityInConsole(oldClient);
                             EditController<Client>.UpdateEntityInDb(newClient);
                         }
-                        else
-                        {
-                            Back();
-                        }
+                        else Back();
                     }
                     if (typeof(T) == typeof(Order))
                     {
@@ -68,13 +52,8 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                             Order newOrder = EditController<Order>.EditEntityInConsole(oldOrder);
                             EditController<Order>.UpdateEntityInDb(newOrder);
                         }
-                        else
-                        {
-                            Back();
-                        }
+                        else Back();
                     }
-
-
                     break;
 
                 case "3":
@@ -83,32 +62,22 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     {
                         SuccesMenuController<Client>.SuccesMenuButtons();
                         Client client = DeleteController<Client>.GetEntityInDb();
-                        if (client != null)
-                        {
-                            DeleteController<Client>.DeleteEntityInDb(client);
-                        }
-                        else
-                        {
-                            Back();
-                        }
+                        if (client != null)DeleteController<Client>.DeleteEntityInDb(client);
+                        else Back();                        
                     }
                     if (typeof(T) == typeof(Order))
                     {
                         Order order = DeleteController<Order>.GetEntityInDb();
-                        if(order != null) {
-                            DeleteController<Order>.DeleteEntityInDb(order);
-                        }
-                        else
-                        {
-                            Back();
-                        }
+                        if(order != null) DeleteController<Order>.DeleteEntityInDb(order);
+                        else Back();
                     }
                     break;
 
                 case "4":
                     Console.Clear();
                     Client showedClient = DeleteController<Client>.GetEntityInDb();
-                    ViewClientOrders.ViewClient(showedClient);
+                    if (showedClient != null) ViewClientOrders.ViewClient(showedClient);                    
+                    else Back();
                     break;
 
                 case "Backspace":

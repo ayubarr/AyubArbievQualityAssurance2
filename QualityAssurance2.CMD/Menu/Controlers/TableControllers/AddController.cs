@@ -45,14 +45,14 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             string clientFirstName = ConsoleReader<string>.Read("client FirstName");
             string clientLastName = ConsoleReader<string>.Read("client LastName");
             string phoneNum = ConsoleReader<string>.Read("client Phone Number");           
-            DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
+            //DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
 
             Client client = new Client()
             {
                 FirstName = clientFirstName,
                 LastName = clientLastName,
                 PhoneNum = phoneNum,
-                DateAdd = dateAdd,
+                DateAdd = DateTime.Now,
                 OrderAmount = 0,
             };
             return client;
@@ -62,7 +62,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Console.WriteLine("Let's create a order!");
             List<Client> allClients = ViewTables<Client>.GetTable();
             float orderPrice = ConsoleReader<float>.Read("order price");
-            DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
+            //DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
             DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DateTimePattern}");
             int clientId = ConsoleReader<int>.Read($"сlient Id. total clients  {allClients.Count}");
             Client client = ReadByIdController.GetClientById(clientId);
@@ -78,7 +78,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Order order = new Order()
             {
                 OrderPrice = orderPrice,
-                OrderDate = dateAdd,
+                OrderDate = DateTime.Now,
                 CloseDate = dateClose,
                 Client = client,
                 ClientId = clientId,
