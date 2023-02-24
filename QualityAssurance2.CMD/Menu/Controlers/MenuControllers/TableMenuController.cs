@@ -1,6 +1,7 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
 using AyubArbievQualityAssurance2.Data.Models.Entities;
 using QualityAssurance2.CMD.Menu.Controlers.TableControllers;
+using QualityAssurance2.CMD.Menu.Controlers.Tables;
 
 namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 {
@@ -24,8 +25,8 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 
                     if (typeof(T) == typeof(Order))
                     {
-                       Order order = AddController<Order>.GetEntityFromConsole();
-                       AddController<Order>.AddEntityToDb(order);
+                        Order order = AddController<Order>.GetEntityFromConsole();
+                        AddController<Order>.AddEntityToDb(order);
                     }
 
                     break;
@@ -54,6 +55,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     Console.Clear();
                     if (typeof(T) == typeof(Client))
                     {
+                        SuccesMenuController<Client>.SuccesMenuButtons();
                         Client client = DeleteController<Client>.GetEntityInDb();
                         DeleteController<Client>.DeleteEntityInDb(client);
                     }
@@ -66,6 +68,8 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 
                 case "4":
                     Console.Clear();
+                    Client showedClient = DeleteController<Client>.GetEntityInDb();
+                    ViewClientOrders.ViewClient(showedClient);
                     break;
 
                 case "Backspace":

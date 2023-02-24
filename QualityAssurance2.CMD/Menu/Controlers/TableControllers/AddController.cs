@@ -60,7 +60,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
         public static Order GetOrderFromConsole()
         {            
             Console.WriteLine("Let's create a order!");
-            List<Client> allClients = TablesViewController<Client>.GetTable();
+            List<Client> allClients = ViewTables<Client>.GetTable();
             float orderPrice = ConsoleReader<float>.Read("order price");
             DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
             DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DateTimePattern}");
