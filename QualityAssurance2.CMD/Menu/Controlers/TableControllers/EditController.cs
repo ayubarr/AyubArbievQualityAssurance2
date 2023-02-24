@@ -45,10 +45,10 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
         public static Client EditClientInConsole(Client client)
         {
             Console.WriteLine("Let's Edit a Client");
-            string clientFirstName = ConsoleReader<string>.Read("client FirstName");
-            string clientLastName = ConsoleReader<string>.Read("client LastName");
-            string phoneNum = ConsoleReader<string>.Read("client Phone Number");
-            DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
+            string clientFirstName = ConsoleReader<string>.Read("client new FirstName");
+            string clientLastName = ConsoleReader<string>.Read("client new LastName");
+            string phoneNum = ConsoleReader<string>.Read("client new Phone Number");
+            DateTime dateAdd = ConsoleReader<DateTime>.Read($"add new date in format {ConsoleConstants.DateTimePattern}");
 
             client.FirstName = clientFirstName;
             client.LastName = clientLastName;
