@@ -1,4 +1,6 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
+using AyubArbievQualityAssurance2.Data.Models.Entities;
+using QualityAssurance2.CMD.Menu.Controlers.Tables;
 
 namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 {
@@ -16,6 +18,8 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 
                 case "N":
                     Console.Clear();
+                    List<Client> clients = ViewTables<Client>.GetTable();
+                    ViewTables<Client>.ViewTable(clients);
                     TableMenuController<T>.TableMenuButtons();
                     break;
 

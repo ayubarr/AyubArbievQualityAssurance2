@@ -51,7 +51,8 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             if (client == default(T))
             {
                 Console.WriteLine($"Client with ID {clientId} not found");
-                return null;
+                Console.ReadKey(); 
+                return default(Client);
             }
             return client;
         }
@@ -62,7 +63,8 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             if(order == default(T))
             {
                 Console.WriteLine($"Order with ID {orderId} not found");
-                return null;
+                Console.ReadKey();
+                return default(Order);
             }
             return order;
         }
