@@ -14,14 +14,14 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
             {
                 case "1":
                     Console.Clear();
-                    List<Client> clients = ViewTables<Client>.GetTable();
+                    List<Client> clients = ViewTables<Client>.GetFullTable();
                     ViewTables<Client>.ViewTable(clients);
                     TableMenuController<Client>.TableMenuButtons();
                     break;
 
                 case "2":
                     Console.Clear();
-                    List<Order> orders = ViewTables<Order>.GetTable();
+                    List<Order> orders = ViewTables<Order>.GetFullTable();
                     ViewTables<Order>.ViewTable(orders);
                     TableMenuController<Order>.TableMenuButtons();
                     break;

@@ -8,7 +8,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.Tables
 {
     public static class ViewTables<T> where T : BaseEntity
     {
-        public static List<T> GetTable()
+        public static List<T> GetFullTable()
         {
             using (AppDbContext dataBase = new AppDbContext())
             {

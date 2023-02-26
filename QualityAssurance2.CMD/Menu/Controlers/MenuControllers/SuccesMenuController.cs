@@ -18,7 +18,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 
                 case "N":
                     Console.Clear();
-                    List<Client> clients = ViewTables<Client>.GetTable();
+                    List<Client> clients = ViewTables<Client>.GetFullTable();
                     ViewTables<Client>.ViewTable(clients);
                     TableMenuController<T>.TableMenuButtons();
                     break;

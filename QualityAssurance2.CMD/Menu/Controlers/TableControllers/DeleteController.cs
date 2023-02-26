@@ -21,8 +21,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                 }
                 if (typeof(T) == typeof(Order))
                 {
-                    Order order = (Order)(object)entity;
-                    order.Client.OrderAmount--;
+                    Order order = (Order)(object)entity;                    
                     repository.Delete((T)(object)order);
                 }
             }
@@ -32,13 +31,13 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
         {
             if (typeof(T) == typeof(Client))
             {
-                List<Client> clients = ViewTables<Client>.GetTable();
+                List<Client> clients = ViewTables<Client>.GetFullTable();
                 ViewTables<Client>.ViewTable(clients);
                 return (T)(object)GetDeletedClientById();
             }
             if (typeof(T) == typeof(Order))
             {
-                List<Order> orders = ViewTables<Order>.GetTable();
+                List<Order> orders = ViewTables<Order>.GetFullTable();
                 ViewTables<Order>.ViewTable(orders);
                 return (T)(object)GetDeletedOrderById();
             }

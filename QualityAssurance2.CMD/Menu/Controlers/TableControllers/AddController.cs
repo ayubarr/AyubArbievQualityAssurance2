@@ -4,6 +4,7 @@ using QualityAssurance2.CMD.Menu.Controlers.ConsoleControllers;
 using QualityAssurance2.CMD.Menu.Controlers.Tables;
 using QualityAssurance2.Data.DataBase.SqlServer;
 using QualityAssurance2.Data.Repositories.Implementations;
+using System.Text.RegularExpressions;
 
 
 namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
@@ -31,7 +32,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
         {
             if (typeof(T) == typeof(Client))
                 return (T)(object)GetClientFromConsole();
-            
+
             if (typeof(T) == typeof(Order))
                 return (T)(object)GetOrderFromConsole();
 
@@ -43,7 +44,20 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Console.WriteLine("Let's Add a Client!");
             string clientFirstName = ConsoleReader<string>.Read("client FirstName");
             string clientLastName = ConsoleReader<string>.Read("client LastName");
-            string phoneNum = ConsoleReader<string>.Read("client Phone Number");           
+            string phoneNum = "";
+            bool isPhoneNumberCorrect = true;
+            while (isPhoneNumberCorrect)
+            {
+                string phoneNumber = ConsoleReader<string>.Read($"client Phone Number in format " +
+                    $"{ConsoleConstants.PhoneNumberPattern}");
+                if (Regex.IsMatch(phoneNumber, ConsoleConstants.PhoneNumberPattern))
+                {
+                    isPhoneNumberCorrect = false;
+                    phoneNum = phoneNumber;
+                }
+                Console.WriteLine($"An error while getting value received." +
+                    $" Please enter client Phone Number in format {ConsoleConstants.PhoneNumberPattern} again");
+            }
 
             Client client = new Client()
             {
@@ -60,11 +74,9 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Console.WriteLine("Let's create a order!");
             float orderPrice = ConsoleReader<float>.Read("order price");
             DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DateTimePattern}");
-
-            List<Client> allClients = ViewTables<Client>.GetTable();
+            List<Client> allClients = ViewTables<Client>.GetFullTable();
             ViewTables<Client>.ViewTable(allClients);
-
-            int clientId = ConsoleReader<int>.Read($"сlient correct Id. total clients  {allClients.Count}");
+            int clientId = ConsoleReader<int>.Read($"сlient Id.");           
             string description = ConsoleReader<string>.Read("description of product");
 
             Order order = new Order()
@@ -73,28 +85,10 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                 OrderDate = DateTime.Now,
                 CloseDate = dateClose,
                 ClientId = clientId,
-                Description = description,          
+                Description = description,
             };
-            
-           
+
             return order;
-        }
-        public static Order UpdateClientWithOrder(Order order)
-        {
-            Client updateClient = ReadByIdController.GetClientById(order.ClientId);
-            if (updateClient == default(T))
-            {
-                Console.WriteLine($"Client with ID {order.ClientId} not found");
-                Console.ReadKey();
-                return null;
-            }
-            updateClient.OrderAmount++;
-
-
-
-            EditController<Client>.UpdateEntityInDb(updateClient);
-            return order;
-       
         }
     }
 }

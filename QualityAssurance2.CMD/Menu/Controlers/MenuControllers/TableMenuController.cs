@@ -27,10 +27,13 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     if (typeof(T) == typeof(Order))
                     {
                         Order order = AddController<Order>.GetEntityFromConsole();
-                        order = AddController<Order>.UpdateClientWithOrder(order);
+                        order = EditController<Order>.UpdateClientWithAddedOrder(order);
                         if (order != null)AddController<Order>.AddEntityToDb(order);
                         else Back();
                     }
+
+                    Console.Clear();
+                    MainMenuController.MainMenuButtons();
                     break;
 
                 case "2":
@@ -40,7 +43,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                         Client oldClient = DeleteController<Client>.GetEntityInDb();
                         if(oldClient != null)
                         {
-                            Client newClient = EditController<Client>.EditEntityInConsole(oldClient);
+                            Client newClient = EditController<Client>.EditClientInConsole(oldClient);
                             EditController<Client>.UpdateEntityInDb(newClient);
                         }
                         else Back();
@@ -50,12 +53,15 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                         Order oldOrder = DeleteController<Order>.GetEntityInDb();
                         if(oldOrder != null)
                         {
-                            Order newOrder = EditController<Order>.EditEntityInConsole(oldOrder);
-                            EditController<Order>.UpdateEntityInDb(newOrder);
-
+                            Order newOrder = EditController<Order>.EditOrderInConsole(oldOrder);
+                            newOrder = EditController<Order>.UpdateClientWithAddedOrder(newOrder);
+                            if (newOrder != null) EditController<Order>.UpdateEntityInDb(newOrder);
                         }
                         else Back();
                     }
+
+                    Console.Clear();
+                    MainMenuController.MainMenuButtons();
                     break;
 
                 case "3":
@@ -70,18 +76,23 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     if (typeof(T) == typeof(Order))
                     {
                         Order order = DeleteController<Order>.GetEntityInDb();
+                        order = EditController<Order>.UpdateClientWithDeletedOrder(order);
                         if(order != null) DeleteController<Order>.DeleteEntityInDb(order);
                         else Back();
                     }
+
+                    Console.Clear();
+                    MainMenuController.MainMenuButtons();
                     break;
 
                 case "4":
                     Console.Clear();
                     Client showedClient = DeleteController<Client>.GetEntityInDb();
-                    if (showedClient != null) ViewClientOrders.ViewClient(showedClient);
-                    
-
+                    if (showedClient != null) ViewClientOrders.ViewClient(showedClient);                    
                     else Back();
+
+                    Console.ReadKey();
+                    BackToMainMenu();
                     break;
 
                 case "Backspace":
@@ -123,9 +134,14 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
         private static void Back()
         {
             Console.Clear();
-            List<Client> clients = ViewTables<Client>.GetTable();
+            List<Client> clients = ViewTables<Client>.GetFullTable();
             ViewTables<Client>.ViewTable(clients);
             TableMenuButtons();  
+        }
+        private static void BackToMainMenu()
+        {
+            Console.Clear();
+            MainMenuController.MainMenuButtons();
         }
     }
 }

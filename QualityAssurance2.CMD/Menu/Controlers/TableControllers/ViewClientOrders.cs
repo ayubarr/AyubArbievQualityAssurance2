@@ -7,26 +7,19 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
     {
         public static void ViewClient(Client client)
         {
+            Console.Clear();
             List<Client> clients = new List<Client>() { client };
             ViewTables<Client>.ClientsTable(clients);
-
-            if (client.Orders == null) return;
-
-            List<Order> orders = client.Orders.ToList();
-
-            ViewOrders(orders);
+            List<Order> allorders = ViewTables<Order>.GetFullTable();
+            List<Order> Correctorders = allorders.Where(z => client.Id == z.ClientId).ToList();
+            ViewOrders(Correctorders);
         }
         public static void ViewOrders(List<Order> orders)
         {
-            if(orders ==  null) return;
+            if(orders == null) return;
 
             ViewTables<Order>.OrdersTable(orders);
 
-            //foreach (Order order in orders)
-            //{
-            //    List<Order> orderss = new List<Order>(){ order };
-            //    ViewTables<Order>.OrdersTable(orderss);
-            //}
         }
     }
 }

@@ -13,11 +13,9 @@ namespace QualityAssurance2.Data.DataBase.SqlServer
         {
             Database.EnsureCreated();
         }
-     
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // base.OnModelCreating(modelBuilder);
-
             modelBuilder.Entity<Client>()
               .HasMany(client => client.Orders)
               .WithOne(order => order.Client)
@@ -33,7 +31,7 @@ namespace QualityAssurance2.Data.DataBase.SqlServer
                     LastName = "Adminuch",
                     PhoneNum = "0555 555 555",
                     OrderAmount = 0,
-                    DateAdd = DateTime.Now,  
+                    DateAdd = DateTime.Now,
                 });
             });
 
