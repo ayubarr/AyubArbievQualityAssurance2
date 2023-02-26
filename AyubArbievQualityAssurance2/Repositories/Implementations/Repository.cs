@@ -47,7 +47,7 @@ namespace QualityAssurance2.Data.Repositories.Implementations
         public T GetById(int id)
         {
             if (DataBaseExist()) return default(T);
-            T entity = _contextDb.Set<T>().FirstOrDefault(z => z.Id.Equals(id));
+            T entity = _contextDb.Set<T>().FirstOrDefault(z => z.Id == id);
             return entity;
         }
 

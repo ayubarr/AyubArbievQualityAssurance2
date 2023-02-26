@@ -64,6 +64,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             //DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
             DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DateTimePattern}");
             int clientId = ConsoleReader<int>.Read($"сlient Id. total clients  {allClients.Count}");
+
             Client client = ReadByIdController.GetClientById(clientId);
             if(client == default(T))
             {
