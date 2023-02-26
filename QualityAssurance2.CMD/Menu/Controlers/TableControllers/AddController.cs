@@ -50,11 +50,12 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             {
                 string phoneNumber = ConsoleReader<string>.Read($"client Phone Number in format " +
                     $"{ConsoleConstants.PhoneNumberPattern}");
-                if (Regex.IsMatch(phoneNumber, ConsoleConstants.PhoneNumberPattern))
+                if (Regex.IsMatch(phoneNumber, @"^\+996\(\d{3}\)\d{2}-\d{2}-\d{2}$"))
                 {
                     isPhoneNumberCorrect = false;
                     phoneNum = phoneNumber;
                 }
+                else
                 Console.WriteLine($"An error while getting value received." +
                     $" Please enter client Phone Number in format {ConsoleConstants.PhoneNumberPattern} again");
             }

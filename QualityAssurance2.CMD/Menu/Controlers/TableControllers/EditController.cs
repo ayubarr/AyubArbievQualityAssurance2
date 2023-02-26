@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
@@ -38,7 +39,20 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             string clientFirstName = ConsoleReader<string>.Read("client new FirstName");
             string clientLastName = ConsoleReader<string>.Read("client new LastName");
             string phoneNum = ConsoleReader<string>.Read("client new Phone Number");
-
+            bool isPhoneNumberCorrect = true;
+            while (isPhoneNumberCorrect)
+            {
+                string phoneNumber = ConsoleReader<string>.Read($"client Phone Number in format " +
+                    $"{ConsoleConstants.PhoneNumberPattern}");
+                if (Regex.IsMatch(phoneNumber, @"^\+996\(\d{3}\)\d{2}-\d{2}-\d{2}$"))
+                {
+                    isPhoneNumberCorrect = false;
+                    phoneNum = phoneNumber;
+                }
+                else
+                    Console.WriteLine($"An error while getting value received." +
+                   $" Please enter client Phone Number in format {ConsoleConstants.PhoneNumberPattern} again");
+            }
             client.FirstName = clientFirstName;
             client.LastName = clientLastName;
             client.PhoneNum = phoneNum;
