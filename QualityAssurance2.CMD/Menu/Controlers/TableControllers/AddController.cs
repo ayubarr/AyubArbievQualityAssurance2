@@ -75,6 +75,8 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
            
             client.OrderAmount++;
 
+          
+
             Order order = new Order()
             {
                 OrderPrice = orderPrice,
@@ -82,8 +84,13 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                 CloseDate = dateClose,
                 ClientId = clientId,
                 Description = description,
-                
             };
+            order.Client.FirstName = client.FirstName;
+            order.Client.LastName = client.LastName;
+            order.Client.PhoneNum = client.PhoneNum;
+            order.Client.DateAdd = client.DateAdd;
+            order.Client.OrderAmount = client.OrderAmount;
+
             return order;
         }
     }
