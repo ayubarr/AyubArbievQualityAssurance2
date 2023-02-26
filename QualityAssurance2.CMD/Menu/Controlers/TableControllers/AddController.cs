@@ -25,7 +25,6 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                     Order order = (Order)(object)entity;
                     repository.Add((T)(object)order);
                 }
-
             }
         }
         public static T GetEntityFromConsole()
@@ -74,9 +73,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             string description = ConsoleReader<string>.Read("description of product");
            
             client.OrderAmount++;
-
           
-
             Order order = new Order()
             {
                 OrderPrice = orderPrice,
@@ -85,11 +82,13 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                 ClientId = clientId,
                 Description = description,
             };
-            order.Client.FirstName = client.FirstName;
-            order.Client.LastName = client.LastName;
-            order.Client.PhoneNum = client.PhoneNum;
-            order.Client.DateAdd = client.DateAdd;
-            order.Client.OrderAmount = client.OrderAmount;
+            
+
+            //order.Client.FirstName = client.FirstName;
+            //order.Client.LastName = client.LastName;
+            //order.Client.PhoneNum = client.PhoneNum;
+            //order.Client.DateAdd = client.DateAdd;
+            //order.Client.OrderAmount = client.OrderAmount;
 
             return order;
         }
