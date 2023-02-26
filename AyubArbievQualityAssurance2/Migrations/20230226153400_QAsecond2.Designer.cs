@@ -12,8 +12,8 @@ using QualityAssurance2.Data.DataBase.SqlServer;
 namespace QualityAssurance2.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230226132514_QAfirst1")]
-    partial class QAfirst1
+    [Migration("20230226153400_QAsecond2")]
+    partial class QAsecond2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,17 @@ namespace QualityAssurance2.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Client");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DateAdd = new DateTime(2023, 2, 26, 21, 33, 59, 424, DateTimeKind.Local).AddTicks(7265),
+                            FirstName = "Adm",
+                            LastName = "Adminuch",
+                            OrderAmount = 0,
+                            PhoneNum = "0555 555 555"
+                        });
                 });
 
             modelBuilder.Entity("AyubArbievQualityAssurance2.Data.Models.Entities.Order", b =>

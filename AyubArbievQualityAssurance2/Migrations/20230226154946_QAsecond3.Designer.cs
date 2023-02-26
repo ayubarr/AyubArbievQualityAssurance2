@@ -12,8 +12,8 @@ using QualityAssurance2.Data.DataBase.SqlServer;
 namespace QualityAssurance2.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230226132827_QAfirst2")]
-    partial class QAfirst2
+    [Migration("20230226154946_QAsecond3")]
+    partial class QAsecond3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,12 +54,26 @@ namespace QualityAssurance2.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Client");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DateAdd = new DateTime(2023, 2, 26, 21, 49, 46, 1, DateTimeKind.Local).AddTicks(1654),
+                            FirstName = "Adm",
+                            LastName = "Adminuch",
+                            OrderAmount = 0,
+                            PhoneNum = "0555 555 555"
+                        });
                 });
 
             modelBuilder.Entity("AyubArbievQualityAssurance2.Data.Models.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
@@ -79,6 +93,8 @@ namespace QualityAssurance2.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
                     b.ToTable("Order");
                 });
 
@@ -86,7 +102,7 @@ namespace QualityAssurance2.Data.Migrations
                 {
                     b.HasOne("AyubArbievQualityAssurance2.Data.Models.Entities.Client", "Client")
                         .WithMany("Orders")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

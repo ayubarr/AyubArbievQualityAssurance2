@@ -48,12 +48,12 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             string clientFirstName = ConsoleReader<string>.Read("client new FirstName");
             string clientLastName = ConsoleReader<string>.Read("client new LastName");
             string phoneNum = ConsoleReader<string>.Read("client new Phone Number");
-            DateTime dateAdd = ConsoleReader<DateTime>.Read($"add new date in format {ConsoleConstants.DateTimePattern}");
+           // DateTime dateAdd = ConsoleReader<DateTime>.Read($"add new date in format {ConsoleConstants.DateTimePattern}");
 
             client.FirstName = clientFirstName;
             client.LastName = clientLastName;
             client.PhoneNum = phoneNum;
-            client.DateAdd = dateAdd;
+            client.DateAdd = DateTime.Now;
                         
             return client;
         }
@@ -62,7 +62,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Console.WriteLine("Let's Edit a order!");
             List<Client> allClients = ViewTables<Client>.GetTable();
             float orderPrice = ConsoleReader<float>.Read("order price");
-            DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
+         //   DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
             DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DateTimePattern}");
             int clientId = ConsoleReader<int>.Read($"сlient Id. total clients  {allClients.Count}");
             Client client = ReadByIdController.GetClientById(clientId);
@@ -74,7 +74,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             string description = ConsoleReader<string>.Read("description of product");
 
             order.OrderPrice = orderPrice;
-            order.OrderDate = dateAdd;
+           // order.OrderDate = DateTime.Now;
             order.CloseDate = dateClose;
             order.Client = client;
             order.ClientId = clientId;

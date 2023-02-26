@@ -27,7 +27,8 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     if (typeof(T) == typeof(Order))
                     {
                         Order order = AddController<Order>.GetEntityFromConsole();
-                        if(order != null) AddController<Order>.AddEntityToDb(order);
+                        order = AddController<Order>.UpdateClientWithOrder(order);
+                        if (order != null)AddController<Order>.AddEntityToDb(order);
                         else Back();
                     }
                     break;
@@ -51,6 +52,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                         {
                             Order newOrder = EditController<Order>.EditEntityInConsole(oldOrder);
                             EditController<Order>.UpdateEntityInDb(newOrder);
+
                         }
                         else Back();
                     }

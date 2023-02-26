@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace QualityAssurance2.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class QAfirst1 : Migration
+    public partial class QAsecond : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,6 +50,11 @@ namespace QualityAssurance2.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Client",
+                columns: new[] { "Id", "DateAdd", "FirstName", "LastName", "OrderAmount", "PhoneNum" },
+                values: new object[] { 1, new DateTime(2023, 2, 26, 21, 31, 16, 298, DateTimeKind.Local).AddTicks(3501), "Adm", "Adminuch", 0, "0555 555 555" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Order_ClientId",

@@ -15,8 +15,28 @@ namespace QualityAssurance2.Data.DataBase.SqlServer
         }
      
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {          
+        {
             // base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Client>()
+              .HasMany(client => client.Orders)
+              .WithOne(order => order.Client)
+              .HasForeignKey(order => order.Id);
+
+            modelBuilder.Entity<Client>(builder =>
+            {
+                builder.Property(c => c.Id).ValueGeneratedOnAdd();
+                builder.HasData(new Client
+                {
+                    Id = 1,
+                    FirstName = "Adm",
+                    LastName = "Adminuch",
+                    PhoneNum = "0555 555 555",
+                    OrderAmount = 0,
+                    DateAdd = DateTime.Now,  
+                });
+            });
+
 
             modelBuilder.Entity<Order>()
                 .HasOne(order => order.Client)
@@ -24,10 +44,12 @@ namespace QualityAssurance2.Data.DataBase.SqlServer
                 .HasForeignKey(order => order.ClientId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Client>()
-                .HasMany(client => client.Orders)
-                .WithOne(order => order.Client)
-                .HasForeignKey(order => order.Id);
+
+            modelBuilder.Entity<Order>(builder =>
+            {
+                builder.Property(o => o.Id).ValueGeneratedOnAdd();
+            });
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

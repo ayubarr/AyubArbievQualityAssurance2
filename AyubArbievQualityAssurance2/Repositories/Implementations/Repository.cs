@@ -19,7 +19,6 @@ namespace QualityAssurance2.Data.Repositories.Implementations
             DbSet<T> TestSet = _contextDb.Set<T>();
             if (TestSet == default(DbSet<T>))
                 return true;
-
             return false;
         }
 
@@ -57,7 +56,7 @@ namespace QualityAssurance2.Data.Repositories.Implementations
             _contextDb.Set<T>().Update(Item);
             _contextDb.SaveChanges();
         }
-
+   
 
     }
 }

@@ -44,7 +44,6 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             string clientFirstName = ConsoleReader<string>.Read("client FirstName");
             string clientLastName = ConsoleReader<string>.Read("client LastName");
             string phoneNum = ConsoleReader<string>.Read("client Phone Number");           
-            //DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
 
             Client client = new Client()
             {
@@ -57,23 +56,16 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             return client;
         }
         public static Order GetOrderFromConsole()
-        {            
+        {
             Console.WriteLine("Let's create a order!");
-            List<Client> allClients = ViewTables<Client>.GetTable();
             float orderPrice = ConsoleReader<float>.Read("order price");
-            //DateTime dateAdd = ConsoleReader<DateTime>.Read($"add date in format {ConsoleConstants.DateTimePattern}");
             DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DateTimePattern}");
-            int clientId = ConsoleReader<int>.Read($"сlient Id. total clients  {allClients.Count}");
 
-            Client client = ReadByIdController.GetClientById(clientId);
-            if(client == default(T))
-            {
-                Console.WriteLine($"Client with ID {clientId} not found");
-                return null;
-            }
+            List<Client> allClients = ViewTables<Client>.GetTable();
+            ViewTables<Client>.ViewTable(allClients);
+
+            int clientId = ConsoleReader<int>.Read($"сlient correct Id. total clients  {allClients.Count}");
             string description = ConsoleReader<string>.Read("description of product");
-           
-            client.OrderAmount++;
 
             Order order = new Order()
             {
@@ -81,14 +73,28 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                 OrderDate = DateTime.Now,
                 CloseDate = dateClose,
                 ClientId = clientId,
-                Description = description,
-                Client = client,
+                Description = description,          
             };
-
-    
-            EditController<Client>.UpdateEntityInDb(client);
-
+            
+           
             return order;
+        }
+        public static Order UpdateClientWithOrder(Order order)
+        {
+            Client updateClient = ReadByIdController.GetClientById(order.ClientId);
+            if (updateClient == default(T))
+            {
+                Console.WriteLine($"Client with ID {order.ClientId} not found");
+                Console.ReadKey();
+                return null;
+            }
+            updateClient.OrderAmount++;
+
+
+
+            EditController<Client>.UpdateEntityInDb(updateClient);
+            return order;
+       
         }
     }
 }
