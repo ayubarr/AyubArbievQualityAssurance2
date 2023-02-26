@@ -6,7 +6,7 @@ namespace AyubArbievQualityAssurance2.Data.Models.Entities
     {
 
         public int ClientId { get; set; }
-        public Client Client { get; set; }
+        public Client Client { get; set; } = new Client { };
         public DateTime OrderDate { get; set; }
         public string Description { get; set; }
         public float OrderPrice { get; set; }

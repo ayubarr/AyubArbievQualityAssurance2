@@ -76,7 +76,9 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                 case "4":
                     Console.Clear();
                     Client showedClient = DeleteController<Client>.GetEntityInDb();
-                    if (showedClient != null) ViewClientOrders.ViewClient(showedClient);                    
+                    if (showedClient != null) ViewClientOrders.ViewClient(showedClient);
+                    
+
                     else Back();
                     break;
 
