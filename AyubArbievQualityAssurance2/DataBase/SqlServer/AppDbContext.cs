@@ -11,7 +11,8 @@ namespace QualityAssurance2.Data.DataBase.SqlServer
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+           // base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Order>()
                 .HasOne(order => order.Client)
                 .WithMany(client => client.Orders)
