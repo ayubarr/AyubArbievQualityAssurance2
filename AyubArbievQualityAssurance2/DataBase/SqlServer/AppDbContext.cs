@@ -15,14 +15,14 @@ namespace QualityAssurance2.Data.DataBase.SqlServer
         }
      
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        {          
             // base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Order>()
                 .HasOne(order => order.Client)
                 .WithMany(client => client.Orders)
                 .HasForeignKey(order => order.ClientId)
-                .OnDelete(DeleteBehavior.Cascade); ;
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Client>()
                 .HasMany(client => client.Orders)

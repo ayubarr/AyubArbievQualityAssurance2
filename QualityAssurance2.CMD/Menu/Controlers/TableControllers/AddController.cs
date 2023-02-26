@@ -73,7 +73,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             string description = ConsoleReader<string>.Read("description of product");
            
             client.OrderAmount++;
-          
+
             Order order = new Order()
             {
                 OrderPrice = orderPrice,
@@ -81,14 +81,11 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                 CloseDate = dateClose,
                 ClientId = clientId,
                 Description = description,
+                Client = client,
             };
-            
 
-            //order.Client.FirstName = client.FirstName;
-            //order.Client.LastName = client.LastName;
-            //order.Client.PhoneNum = client.PhoneNum;
-            //order.Client.DateAdd = client.DateAdd;
-            //order.Client.OrderAmount = client.OrderAmount;
+    
+            EditController<Client>.UpdateEntityInDb(client);
 
             return order;
         }
