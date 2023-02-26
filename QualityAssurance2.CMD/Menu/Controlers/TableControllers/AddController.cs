@@ -77,7 +77,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DateTimePattern}");
             List<Client> allClients = ViewTables<Client>.GetFullTable();
             ViewTables<Client>.ViewTable(allClients);
-            int clientId = ConsoleReader<int>.Read($"сlient Id.");           
+            int clientId = ConsoleReader<int>.Read($"сlient Id");           
             string description = ConsoleReader<string>.Read("description of product");
 
             Order order = new Order()

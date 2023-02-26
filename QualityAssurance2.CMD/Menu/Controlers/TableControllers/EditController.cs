@@ -82,7 +82,12 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
         public static Order UpdateClientWithAddedOrder(Order order)
         {
             Client updateClient = ReadByIdController.GetClientById(order.ClientId);
-            ExistCheck(updateClient, order);
+             if (updateClient == default(T))
+             {
+                Console.WriteLine($"Client with ID {order.ClientId} not found");
+                Console.ReadKey();
+
+             }
 
             updateClient.OrderAmount++;
             EditController<Client>.UpdateEntityInDb(updateClient);
@@ -92,7 +97,11 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
         public static Order UpdateClientWithDeletedOrder(Order order)
         {
             Client updateClient = ReadByIdController.GetClientById(order.ClientId);
-            ExistCheck(updateClient, order);
+            if (updateClient == default(T))
+            {
+                Console.WriteLine($"Client with ID {order.ClientId} not found");
+                Console.ReadKey();
+            }
 
             updateClient.OrderAmount--;
             EditController<Client>.UpdateEntityInDb(updateClient);
@@ -100,12 +109,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
         }
         private static void ExistCheck(Client updateClient, Order order)
         {
-            if (updateClient == default(T))
-            {
-                Console.WriteLine($"Client with ID {order.ClientId} not found");
-                Console.ReadKey();
-                return;
-            }
+           
         }
     }
 }

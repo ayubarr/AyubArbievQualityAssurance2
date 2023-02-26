@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QualityAssurance2.Data.DataBase.SqlServer;
 
@@ -11,9 +12,11 @@ using QualityAssurance2.Data.DataBase.SqlServer;
 namespace QualityAssurance2.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230226200307_SecondQA5")]
+    partial class SecondQA5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,17 +54,6 @@ namespace QualityAssurance2.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Client");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DateAdd = new DateTime(2023, 2, 27, 2, 6, 45, 121, DateTimeKind.Local).AddTicks(4971),
-                            FirstName = "Adm",
-                            LastName = "Adminuch",
-                            OrderAmount = 0,
-                            PhoneNum = "0555 555 555"
-                        });
                 });
 
             modelBuilder.Entity("AyubArbievQualityAssurance2.Data.Models.Entities.Order", b =>

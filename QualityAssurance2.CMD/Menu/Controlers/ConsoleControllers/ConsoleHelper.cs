@@ -6,9 +6,9 @@
         {
             Console.WriteLine($"Please enter {fieldName}");
             string value = Console.ReadLine();
-            if (value.Length >= 2)return value;
+            if (value == " " || value == "") throw new Exception(); 
 
-            else throw new Exception();
+            return value;
         }
 
         public static int GetIntFromConsole(string fieldName)
