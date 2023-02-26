@@ -5,7 +5,7 @@
 namespace QualityAssurance2.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class QAfirst1 : Migration
+    public partial class QAfirst3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

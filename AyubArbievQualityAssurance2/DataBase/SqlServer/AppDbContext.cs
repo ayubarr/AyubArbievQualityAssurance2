@@ -9,9 +9,14 @@ namespace QualityAssurance2.Data.DataBase.SqlServer
         public DbSet<Order> Order { get; set; }
         public DbSet<Client> Client { get; set; }
 
+        public AppDbContext()
+        {
+            Database.EnsureCreated();
+        }
+     
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           // base.OnModelCreating(modelBuilder);
+            // base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Order>()
                 .HasOne(order => order.Client)
@@ -33,7 +38,7 @@ namespace QualityAssurance2.Data.DataBase.SqlServer
                 .Build();
 
             string? connectionString = config
-                .GetConnectionString("ConnectionString");
+                .GetConnectionString("ConnectionString2");
 
             optionsBuilder.UseSqlServer(connectionString);
         }

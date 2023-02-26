@@ -80,7 +80,6 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                 OrderPrice = orderPrice,
                 OrderDate = DateTime.Now,
                 CloseDate = dateClose,
-                Client = client,
                 ClientId = clientId,
                 Description = description,
                 

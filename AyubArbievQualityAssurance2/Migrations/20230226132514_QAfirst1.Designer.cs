@@ -12,8 +12,8 @@ using QualityAssurance2.Data.DataBase.SqlServer;
 namespace QualityAssurance2.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230223191007_Second")]
-    partial class Second
+    [Migration("20230226132514_QAfirst1")]
+    partial class QAfirst1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,7 +59,10 @@ namespace QualityAssurance2.Data.Migrations
             modelBuilder.Entity("AyubArbievQualityAssurance2.Data.Models.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
@@ -79,6 +82,8 @@ namespace QualityAssurance2.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
                     b.ToTable("Order");
                 });
 
@@ -86,7 +91,7 @@ namespace QualityAssurance2.Data.Migrations
                 {
                     b.HasOne("AyubArbievQualityAssurance2.Data.Models.Entities.Client", "Client")
                         .WithMany("Orders")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

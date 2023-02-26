@@ -12,8 +12,8 @@ using QualityAssurance2.Data.DataBase.SqlServer;
 namespace QualityAssurance2.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230224082443_Third")]
-    partial class Third
+    [Migration("20230226132827_QAfirst2")]
+    partial class QAfirst2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
