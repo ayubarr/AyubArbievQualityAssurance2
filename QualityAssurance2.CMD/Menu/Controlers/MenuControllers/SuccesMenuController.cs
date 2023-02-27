@@ -14,6 +14,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
             switch (choice)
             {
                 case "Y":
+                    Console.Clear();
                     break;
 
                 case "N":
