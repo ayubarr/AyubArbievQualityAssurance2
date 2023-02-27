@@ -1,7 +1,7 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
 using AyubArbievQualityAssurance2.Data.Models.Entities;
 using QualityAssurance2.CMD.DataBaseControllers.TableViews;
-using QualityAssurance2.CMD.Menu.Controlers.TableMenuControllers;
+using QualityAssurance2.CMD.Menu.Models;
 
 namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 {
@@ -14,13 +14,13 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
             {
                 List<Client> clients = ViewTables<Client>.GetFullTable();
                 ViewTables<Client>.ViewTable(clients);
-                TableMenuController<Client>.TableMenuButtons();
+                TableMenu<Client>.TableMenuButtons();
             }
             if (typeof(T) == typeof(Order))
             {
                 List<Order> orders = ViewTables<Order>.GetFullTable();
                 ViewTables<Order>.ViewTable(orders);
-                TableMenuController<Order>.TableMenuButtons();
+                TableMenu<Order>.TableMenuButtons();
             }
         }
     }

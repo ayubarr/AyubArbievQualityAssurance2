@@ -2,6 +2,7 @@
 using AyubArbievQualityAssurance2.Data.Models.Entities;
 using QualityAssurance2.CMD.DataBaseControllers.TableViews;
 using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
+using QualityAssurance2.CMD.Menu.Models;
 
 namespace QualityAssurance2.CMD.Menu.Controlers.TableMenuControllers
 {
@@ -22,7 +23,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableMenuControllers
                     Console.Clear();
                     List<Client> clients = ViewTables<Client>.GetFullTable();
                     ViewTables<Client>.ViewTable(clients);
-                    TableMenuController<T>.TableMenuButtons();
+                    TableMenu<T>.TableMenuButtons();
                     break;
 
                 case "Escape":

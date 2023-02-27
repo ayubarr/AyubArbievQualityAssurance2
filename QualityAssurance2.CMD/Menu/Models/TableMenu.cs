@@ -18,83 +18,19 @@ namespace QualityAssurance2.CMD.Menu.Models
             switch (choice)
             {
                 case "1":
-                    Console.Clear();
-                    if (typeof(T) == typeof(Client))
-                    {
-                        Client client = AddController<Client>.GetEntityFromConsole();
-                        if (client != null) AddController<Client>.AddEntityToDb(client);
-                        else Back();
-                    }
-
-                    if (typeof(T) == typeof(Order))
-                    {
-                        Order order = AddController<Order>.GetEntityFromConsole();
-                        order = EditController<Order>.UpdateClientWithAddedOrder(order);
-                        if (order != null) AddController<Order>.AddEntityToDb(order);
-                        else Back();
-                    }
-
-                    Console.Clear();
-                    MainMenu.MainMenuButtons();
+                    TableMenuButtonsController<T>.AddButtonReaction();
                     break;
 
                 case "2":
-                    Console.Clear();
-                    if (typeof(T) == typeof(Client))
-                    {
-                        Client oldClient = DeleteController<Client>.GetEntityInDb();
-                        if (oldClient != null)
-                        {
-                            Client newClient = EditController<Client>.EditClientInConsole(oldClient);
-                            EditController<Client>.UpdateEntityInDb(newClient);
-                        }
-                        else Back();
-                    }
-                    if (typeof(T) == typeof(Order))
-                    {
-                        Order oldOrder = DeleteController<Order>.GetEntityInDb();
-                        if (oldOrder != null)
-                        {
-                            Order newOrder = EditController<Order>.EditOrderInConsole(oldOrder);
-                            newOrder = EditController<Order>.UpdateClientWithAddedOrder(newOrder);
-                            if (newOrder != null) EditController<Order>.UpdateEntityInDb(newOrder);
-                        }
-                        else Back();
-                    }
-
-                    Console.Clear();
-                    MainMenu.MainMenuButtons();
+                    TableMenuButtonsController<T>.EditMenuReaction();
                     break;
 
                 case "3":
-                    Console.Clear();
-                    if (typeof(T) == typeof(Client))
-                    {
-                        SuccesMenuController<Client>.SuccesMenuButtons();
-                        Client client = DeleteController<Client>.GetEntityInDb();
-                        if (client != null) DeleteController<Client>.DeleteEntityInDb(client);
-                        else Back();
-                    }
-                    if (typeof(T) == typeof(Order))
-                    {
-                        Order order = DeleteController<Order>.GetEntityInDb();
-                        order = EditController<Order>.UpdateClientWithDeletedOrder(order);
-                        if (order != null) DeleteController<Order>.DeleteEntityInDb(order);
-                        else Back();
-                    }
-
-                    Console.Clear();
-                    MainMenu.MainMenuButtons();
+                    TableMenuButtonsController<T>.DeleteButtonReaction();
                     break;
 
                 case "4":
-                    Console.Clear();
-                    Client showedClient = DeleteController<Client>.GetEntityInDb();
-                    if (showedClient != null) ViewClientOrders.ViewClient(showedClient);
-                    else Back();
-
-                    Console.ReadKey();
-                    BackToMainMenu();
+                    TableMenuButtonsController<T>.ShowClientsButtonReaction();
                     break;
 
                 case "Backspace":
@@ -131,19 +67,6 @@ namespace QualityAssurance2.CMD.Menu.Models
                "[Back] - Return\n" +
                "[Esc] - Exit\n"
                );
-        }
-
-        private static void Back()
-        {
-            Console.Clear();
-            List<Client> clients = ViewTables<Client>.GetFullTable();
-            ViewTables<Client>.ViewTable(clients);
-            TableMenuButtons();
-        }
-        private static void BackToMainMenu()
-        {
-            Console.Clear();
-            MainMenu.MainMenuButtons();
         }
     }
 }
