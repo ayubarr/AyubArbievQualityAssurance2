@@ -1,6 +1,7 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
 using AyubArbievQualityAssurance2.Data.Models.Entities;
 using QualityAssurance2.CMD.Menu.Controlers.ConsoleControllers;
+using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
 using QualityAssurance2.CMD.Menu.Controlers.Tables;
 using QualityAssurance2.Data.DataBase.SqlServer;
 using QualityAssurance2.Data.Repositories.Implementations;
@@ -84,9 +85,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Client updateClient = ReadByIdController.GetClientById(order.ClientId);
              if (updateClient == default(T))
              {
-                Console.WriteLine($"Client with ID {order.ClientId} not found");
-                Console.ReadKey();
-
+                BackToMainMenu(order.ClientId);
              }
 
             updateClient.OrderAmount++;
@@ -99,17 +98,19 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Client updateClient = ReadByIdController.GetClientById(order.ClientId);
             if (updateClient == default(T))
             {
-                Console.WriteLine($"Client with ID {order.ClientId} not found");
-                Console.ReadKey();
+                BackToMainMenu(order.ClientId);
             }
 
             updateClient.OrderAmount--;
             EditController<Client>.UpdateEntityInDb(updateClient);
             return order;
         }
-        private static void ExistCheck(Client updateClient, Order order)
+        private static void BackToMainMenu(int entityId)
         {
-           
+            Console.WriteLine($"Entity with ID {entityId} not found");
+            Console.ReadKey();
+            Console.Clear();
+            MainMenuController.MainMenuButtons();   
         }
     }
 }

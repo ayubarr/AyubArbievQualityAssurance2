@@ -1,4 +1,6 @@
-﻿namespace QualityAssurance2.CMD.Menu.Controlers.ConsoleControllers
+﻿using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
+
+namespace QualityAssurance2.CMD.Menu.Controlers.ConsoleControllers
 {
     public static class ConsoleReader<T>
     {
@@ -16,7 +18,10 @@
                 }
                 catch
                 {
+                    //Console.Clear();
                     Console.WriteLine($"An error while getting value received. Please enter {fieldName} again");
+                    //Console.ReadKey();
+                    //MainMenuController.MainMenuButtons();
                 }
             }
 

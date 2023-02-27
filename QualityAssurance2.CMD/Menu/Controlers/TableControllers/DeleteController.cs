@@ -1,6 +1,7 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
 using AyubArbievQualityAssurance2.Data.Models.Entities;
 using QualityAssurance2.CMD.Menu.Controlers.ConsoleControllers;
+using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
 using QualityAssurance2.CMD.Menu.Controlers.Tables;
 using QualityAssurance2.Data.DataBase.SqlServer;
 using QualityAssurance2.Data.Repositories.Implementations;
@@ -49,8 +50,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Client client = ReadByIdController.GetClientById(clientId);
             if (client == default(T))
             {
-                Console.WriteLine($"Client with ID {clientId} not found");
-                Console.ReadKey(); 
+                InvalidId(clientId);
                 return default(Client);
             }
             return client;
@@ -61,13 +61,18 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Order order = ReadByIdController.GetOrderById(orderId);
             if(order == default(T))
             {
-                Console.WriteLine($"Order with ID {orderId} not found");
-                Console.ReadKey();
+                InvalidId(orderId); 
                 return default(Order);
             }
             return order;
         }
-
+        public static void InvalidId(int entity)
+        {
+            Console.WriteLine($"Entity with ID {entity} not found");
+            Console.ReadKey();
+            Console.Clear();
+            TableMenuController<Client>.TableMenuButtons();
+        }
 
     }
 }
