@@ -71,7 +71,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Console.WriteLine($"Entity with ID {entity} not found");
             Console.ReadKey();
             Console.Clear();
-            TableMenuController<Client>.TableMenuButtons();
+            MainMenuController.MainMenuButtons();
         }
 
     }
