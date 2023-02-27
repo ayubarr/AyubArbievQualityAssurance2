@@ -34,30 +34,30 @@ namespace QualityAssurance2.CMD.DataBaseControllers.TableViews
         public static void ClientsTable(List<Client> clients)
         {
             Console.WriteLine("Clients Table:\n" +
-                "ID|FirstName|LastName|PhoneNum|OrderAmount|DateAdd|");
+                "ID | FirstName | LastName | PhoneNum | OrderAmount | DateAdd |");
             foreach (var client in clients)
-                Console.WriteLine($" {client.Id}|" +
-                    $"{client.FirstName}|" +
-                    $"{client.LastName}|" +
-                    $"{client.PhoneNum}|" +
-                    $"{client.OrderAmount}|" +
-                    $"{client.DateAdd}|\n");
+                Console.WriteLine($" {client.Id} |" +
+                    $" {client.FirstName} |" +
+                    $" {client.LastName} |" +
+                    $" {client.PhoneNum} |" +
+                    $" {client.OrderAmount} |" +
+                    $" {client.DateAdd} |\n");
         }
         public static void OrdersTable(List<Order> orders)
         {
 
             Console.WriteLine("Orders Table:\n" +
-               "ID| OrderPrice |OrderDate |CloseDate|ClientId|ClientLastName|");
+               "ID | OrderPrice | OrderDate | CloseDate | ClientId | ClientLastName |");
             foreach (var order in orders)
             {
                 Client client = ReadByIdController.GetClientById(order.ClientId);
 
-                Console.WriteLine($" {order.Id}|" +
-                $"{order.OrderPrice}|" +
-                $"{order.OrderDate}|" +
-                $"{order.CloseDate}|" +
-                $"{order.ClientId}|" +
-                $"{client.LastName}\n" +
+                Console.WriteLine($" {order.Id} |" +
+                $" {order.OrderPrice} |" +
+                $" {order.OrderDate} |" +
+                $" {order.CloseDate} |" +
+                $"  {order.ClientId}  |" +
+                $" {client.LastName} |\n" +
                 $"Description: {order.Description}\n");
             }
 
