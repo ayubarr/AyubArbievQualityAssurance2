@@ -50,7 +50,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Client client = ReadByIdController.GetClientById(clientId);
             if (client == default(T))
             {
-                InvalidId(clientId);
+                BackToMainMenu(clientId);
                 return default(Client);
             }
             return client;
@@ -61,12 +61,12 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Order order = ReadByIdController.GetOrderById(orderId);
             if(order == default(T))
             {
-                InvalidId(orderId); 
+                BackToMainMenu(orderId); 
                 return default(Order);
             }
             return order;
         }
-        public static void InvalidId(int entity)
+        public static void BackToMainMenu(int entity)
         {
             Console.WriteLine($"Entity with ID {entity} not found");
             Console.ReadKey();
