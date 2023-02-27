@@ -6,7 +6,7 @@
         {
             Console.WriteLine($"Please enter {fieldName}");
             string value = Console.ReadLine();
-            if (value == " " || value == "") throw new Exception(); 
+            if (value == " " || value == "") throw new Exception();
 
             return value;
         }

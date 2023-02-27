@@ -16,7 +16,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
         }
         public static void ViewOrders(List<Order> orders)
         {
-            if(orders == null) return;
+            if (orders == null) return;
 
             ViewTables<Order>.OrdersTable(orders);
 
