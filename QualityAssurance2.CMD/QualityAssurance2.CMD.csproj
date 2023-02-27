@@ -11,8 +11,4 @@
     <ProjectReference Include="..\AyubArbievQualityAssurance2\QualityAssurance2.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Menu\Controlers\Interfaces\" />
-  </ItemGroup>
-
 </Project>
