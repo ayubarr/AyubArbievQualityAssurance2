@@ -8,13 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Menu\Interfaces\**" />
-    <EmbeddedResource Remove="Menu\Interfaces\**" />
-    <None Remove="Menu\Interfaces\**" />
+    <ProjectReference Include="..\AyubArbievQualityAssurance2\QualityAssurance2.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AyubArbievQualityAssurance2\QualityAssurance2.Data.csproj" />
+    <Folder Include="Menu\Controlers\Interfaces\" />
   </ItemGroup>
 
 </Project>

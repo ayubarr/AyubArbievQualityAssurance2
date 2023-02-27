@@ -1,13 +1,13 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
 using AyubArbievQualityAssurance2.Data.Models.Entities;
+using QualityAssurance2.CMD.DataBaseControllers.TableViews;
 using QualityAssurance2.CMD.Menu.Controlers.ConsoleControllers;
-using QualityAssurance2.CMD.Menu.Controlers.Tables;
 using QualityAssurance2.Data.DataBase.SqlServer;
 using QualityAssurance2.Data.Repositories.Implementations;
 using System.Text.RegularExpressions;
 
 
-namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
+namespace QualityAssurance2.CMD.DataBaseControllers.TableControllers
 {
     public static class AddController<T> where T : BaseEntity
     {
@@ -36,7 +36,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             if (typeof(T) == typeof(Order))
                 return (T)(object)GetOrderFromConsole();
 
-            return default(T);
+            return default;
         }
 
         public static Client GetClientFromConsole()
@@ -56,8 +56,8 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                     phoneNum = phoneNumber;
                 }
                 else
-                Console.WriteLine($"An error while getting value received." +
-                    $" Please enter client Phone Number in format {ConsoleConstants.PhoneNumberPattern} again");
+                    Console.WriteLine($"An error while getting value received." +
+                        $" Please enter client Phone Number in format {ConsoleConstants.PhoneNumberPattern} again");
             }
 
             Client client = new Client()
@@ -77,7 +77,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             DateTime dateClose = ConsoleReader<DateTime>.Read($"close date in format {ConsoleConstants.DateTimePattern}");
             List<Client> allClients = ViewTables<Client>.GetFullTable();
             ViewTables<Client>.ViewTable(allClients);
-            int clientId = ConsoleReader<int>.Read($"сlient Id");           
+            int clientId = ConsoleReader<int>.Read($"сlient Id");
             string description = ConsoleReader<string>.Read("description of product");
 
             Order order = new Order()

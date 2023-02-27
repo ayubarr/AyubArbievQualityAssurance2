@@ -1,7 +1,6 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Entities;
-using QualityAssurance2.CMD.Menu.Controlers.Tables;
 
-namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
+namespace QualityAssurance2.CMD.DataBaseControllers.TableViews
 {
     public class ViewClientOrders
     {

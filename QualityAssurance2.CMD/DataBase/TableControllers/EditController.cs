@@ -1,18 +1,13 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
 using AyubArbievQualityAssurance2.Data.Models.Entities;
+using QualityAssurance2.CMD.DataBaseControllers.TableViews;
 using QualityAssurance2.CMD.Menu.Controlers.ConsoleControllers;
-using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
-using QualityAssurance2.CMD.Menu.Controlers.Tables;
+using QualityAssurance2.CMD.Menu.Models;
 using QualityAssurance2.Data.DataBase.SqlServer;
 using QualityAssurance2.Data.Repositories.Implementations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
+namespace QualityAssurance2.CMD.DataBaseControllers.TableControllers
 {
     public static class EditController<T> where T : BaseEntity
     {
@@ -58,7 +53,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             client.LastName = clientLastName;
             client.PhoneNum = phoneNum;
             client.DateAdd = DateTime.Now;
-                        
+
             return client;
         }
         public static Order EditOrderInConsole(Order order)
@@ -73,9 +68,9 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
 
             order.OrderPrice = orderPrice;
             order.OrderDate = DateTime.Now;
-            order.CloseDate = dateClose;          
+            order.CloseDate = dateClose;
             order.ClientId = clientId;
-            order.Description = description;   
+            order.Description = description;
 
             return order;
         }
@@ -83,10 +78,10 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
         public static Order UpdateClientWithAddedOrder(Order order)
         {
             Client updateClient = ReadByIdController.GetClientById(order.ClientId);
-             if (updateClient == default(T))
-             {
+            if (updateClient == default(T))
+            {
                 BackToMainMenu(order.ClientId);
-             }
+            }
 
             updateClient.OrderAmount++;
             EditController<Client>.UpdateEntityInDb(updateClient);
@@ -110,7 +105,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Console.WriteLine($"Entity with ID {entityId} not found");
             Console.ReadKey();
             Console.Clear();
-            MainMenu.MainMenuButtons();   
+            MainMenu.MainMenuButtons();
         }
     }
 }

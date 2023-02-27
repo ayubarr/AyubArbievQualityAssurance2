@@ -1,9 +1,11 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
 using AyubArbievQualityAssurance2.Data.Models.Entities;
-using QualityAssurance2.CMD.Menu.Controlers.TableControllers;
-using QualityAssurance2.CMD.Menu.Controlers.Tables;
+using QualityAssurance2.CMD.DataBaseControllers.TableControllers;
+using QualityAssurance2.CMD.DataBaseControllers.TableViews;
+using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
+using QualityAssurance2.CMD.Menu.Models;
 
-namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
+namespace QualityAssurance2.CMD.Menu.Controlers.TableMenuControllers
 {
     public static class TableMenuController<T> where T : BaseEntity
     {
@@ -20,7 +22,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     if (typeof(T) == typeof(Client))
                     {
                         Client client = AddController<Client>.GetEntityFromConsole();
-                        if(client != null) AddController<Client>.AddEntityToDb(client);
+                        if (client != null) AddController<Client>.AddEntityToDb(client);
                         else Back();
                     }
 
@@ -28,7 +30,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     {
                         Order order = AddController<Order>.GetEntityFromConsole();
                         order = EditController<Order>.UpdateClientWithAddedOrder(order);
-                        if (order != null)AddController<Order>.AddEntityToDb(order);
+                        if (order != null) AddController<Order>.AddEntityToDb(order);
                         else Back();
                     }
 
@@ -41,7 +43,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     if (typeof(T) == typeof(Client))
                     {
                         Client oldClient = DeleteController<Client>.GetEntityInDb();
-                        if(oldClient != null)
+                        if (oldClient != null)
                         {
                             Client newClient = EditController<Client>.EditClientInConsole(oldClient);
                             EditController<Client>.UpdateEntityInDb(newClient);
@@ -51,7 +53,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     if (typeof(T) == typeof(Order))
                     {
                         Order oldOrder = DeleteController<Order>.GetEntityInDb();
-                        if(oldOrder != null)
+                        if (oldOrder != null)
                         {
                             Order newOrder = EditController<Order>.EditOrderInConsole(oldOrder);
                             newOrder = EditController<Order>.UpdateClientWithAddedOrder(newOrder);
@@ -70,14 +72,14 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     {
                         SuccesMenuController<Client>.SuccesMenuButtons();
                         Client client = DeleteController<Client>.GetEntityInDb();
-                        if (client != null)DeleteController<Client>.DeleteEntityInDb(client);
-                        else Back();                        
+                        if (client != null) DeleteController<Client>.DeleteEntityInDb(client);
+                        else Back();
                     }
                     if (typeof(T) == typeof(Order))
                     {
                         Order order = DeleteController<Order>.GetEntityInDb();
                         order = EditController<Order>.UpdateClientWithDeletedOrder(order);
-                        if(order != null) DeleteController<Order>.DeleteEntityInDb(order);
+                        if (order != null) DeleteController<Order>.DeleteEntityInDb(order);
                         else Back();
                     }
 
@@ -88,7 +90,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                 case "4":
                     Console.Clear();
                     Client showedClient = DeleteController<Client>.GetEntityInDb();
-                    if (showedClient != null) ViewClientOrders.ViewClient(showedClient);                    
+                    if (showedClient != null) ViewClientOrders.ViewClient(showedClient);
                     else Back();
 
                     Console.ReadKey();
@@ -136,7 +138,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
             Console.Clear();
             List<Client> clients = ViewTables<Client>.GetFullTable();
             ViewTables<Client>.ViewTable(clients);
-            TableMenuButtons();  
+            TableMenuButtons();
         }
         private static void BackToMainMenu()
         {

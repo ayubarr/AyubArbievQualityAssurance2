@@ -1,12 +1,12 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
 using AyubArbievQualityAssurance2.Data.Models.Entities;
+using QualityAssurance2.CMD.DataBaseControllers.TableViews;
 using QualityAssurance2.CMD.Menu.Controlers.ConsoleControllers;
-using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
-using QualityAssurance2.CMD.Menu.Controlers.Tables;
+using QualityAssurance2.CMD.Menu.Models;
 using QualityAssurance2.Data.DataBase.SqlServer;
 using QualityAssurance2.Data.Repositories.Implementations;
 
-namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
+namespace QualityAssurance2.CMD.DataBaseControllers.TableControllers
 {
     public static class DeleteController<T> where T : BaseEntity
     {
@@ -22,7 +22,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                 }
                 if (typeof(T) == typeof(Order))
                 {
-                    Order order = (Order)(object)entity;                    
+                    Order order = (Order)(object)entity;
                     repository.Delete((T)(object)order);
                 }
             }
@@ -42,7 +42,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
                 ViewTables<Order>.ViewTable(orders);
                 return (T)(object)GetDeletedOrderById();
             }
-            return default(T);
+            return default;
         }
         private static Client GetDeletedClientById()
         {
@@ -51,7 +51,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             if (client == default(T))
             {
                 BackToMainMenu(clientId);
-                return default(Client);
+                return default;
             }
             return client;
         }
@@ -59,10 +59,10 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
         {
             int orderId = ConsoleReader<int>.Read("order Id");
             Order order = ReadByIdController.GetOrderById(orderId);
-            if(order == default(T))
+            if (order == default(T))
             {
-                BackToMainMenu(orderId); 
-                return default(Order);
+                BackToMainMenu(orderId);
+                return default;
             }
             return order;
         }

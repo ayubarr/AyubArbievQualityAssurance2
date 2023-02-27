@@ -1,10 +1,10 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
 using AyubArbievQualityAssurance2.Data.Models.Entities;
-using QualityAssurance2.CMD.Menu.Controlers.TableControllers;
+using QualityAssurance2.CMD.DataBaseControllers.TableControllers;
 using QualityAssurance2.Data.DataBase.SqlServer;
 using QualityAssurance2.Data.Repositories.Implementations;
 
-namespace QualityAssurance2.CMD.Menu.Controlers.Tables
+namespace QualityAssurance2.CMD.DataBaseControllers.TableViews
 {
     public static class ViewTables<T> where T : BaseEntity
     {

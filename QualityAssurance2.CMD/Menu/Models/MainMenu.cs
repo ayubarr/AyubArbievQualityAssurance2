@@ -1,7 +1,7 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Entities;
-using QualityAssurance2.CMD.Menu.Controlers.Tables;
+using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
 
-namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
+namespace QualityAssurance2.CMD.Menu.Models
 {
     public static class MainMenu
     {

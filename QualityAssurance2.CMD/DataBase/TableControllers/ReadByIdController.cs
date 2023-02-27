@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
+namespace QualityAssurance2.CMD.DataBaseControllers.TableControllers
 {
-    public  static class ReadByIdController
+    public static class ReadByIdController
     {
         public static Client GetClientById(int id)
         {
