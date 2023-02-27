@@ -1,7 +1,4 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
-using AyubArbievQualityAssurance2.Data.Models.Entities;
-using QualityAssurance2.CMD.DataBaseControllers.TableControllers;
-using QualityAssurance2.CMD.DataBaseControllers.TableViews;
 using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
 using QualityAssurance2.CMD.Menu.Controlers.TableMenuControllers;
 

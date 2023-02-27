@@ -72,7 +72,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableMenuControllers
                 if (order != null) DeleteController<Order>.DeleteEntityInDb(order);
                 else Back();
             }
-
+           
             MainMenu.MainMenuButtons();
         }
         public static void ShowClientsButtonReaction()

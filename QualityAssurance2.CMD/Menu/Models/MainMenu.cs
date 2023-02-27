@@ -7,6 +7,7 @@ namespace QualityAssurance2.CMD.Menu.Models
     {
         public static void MainMenuButtons()
         {
+            Console.Clear();
             ViewMainMenuInfo();
             string choice = ClickCheck();
             switch (choice)
