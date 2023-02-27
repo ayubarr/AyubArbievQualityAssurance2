@@ -110,7 +110,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.TableControllers
             Console.WriteLine($"Entity with ID {entityId} not found");
             Console.ReadKey();
             Console.Clear();
-            MainMenuController.MainMenuButtons();   
+            MainMenu.MainMenuButtons();   
         }
     }
 }

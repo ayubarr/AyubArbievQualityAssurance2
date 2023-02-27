@@ -33,7 +33,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     }
 
                     Console.Clear();
-                    MainMenuController.MainMenuButtons();
+                    MainMenu.MainMenuButtons();
                     break;
 
                 case "2":
@@ -61,7 +61,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     }
 
                     Console.Clear();
-                    MainMenuController.MainMenuButtons();
+                    MainMenu.MainMenuButtons();
                     break;
 
                 case "3":
@@ -82,7 +82,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
                     }
 
                     Console.Clear();
-                    MainMenuController.MainMenuButtons();
+                    MainMenu.MainMenuButtons();
                     break;
 
                 case "4":
@@ -97,7 +97,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 
                 case "Backspace":
                     Console.Clear();
-                    MainMenuController.MainMenuButtons();
+                    MainMenu.MainMenuButtons();
                     break;
                 case "Escape":
                     Environment.Exit(0);
@@ -141,7 +141,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
         private static void BackToMainMenu()
         {
             Console.Clear();
-            MainMenuController.MainMenuButtons();
+            MainMenu.MainMenuButtons();
         }
     }
 }

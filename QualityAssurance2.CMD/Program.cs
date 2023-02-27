@@ -1,3 +1,3 @@
 ﻿using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
-MainMenuController.MainMenuButtons();
+MainMenu.MainMenuButtons();
 Console.ReadKey();

@@ -1,6 +1,5 @@
 ﻿using AyubArbievQualityAssurance2.Data.Models.Common;
 using AyubArbievQualityAssurance2.Data.Models.Entities;
-using QualityAssurance2.CMD.Menu.Controlers.MenuControllers;
 using QualityAssurance2.CMD.Menu.Controlers.TableControllers;
 using QualityAssurance2.Data.DataBase.SqlServer;
 using QualityAssurance2.Data.Repositories.Implementations;
@@ -46,12 +45,13 @@ namespace QualityAssurance2.CMD.Menu.Controlers.Tables
         }
         public static void OrdersTable(List<Order> orders)
         {
-            
+
             Console.WriteLine("Orders Table:\n" +
                "ID| OrderPrice |OrderDate |CloseDate|ClientId|ClientLastName|");
-            foreach (var order in orders) {
+            foreach (var order in orders)
+            {
                 Client client = ReadByIdController.GetClientById(order.ClientId);
-           
+
                 Console.WriteLine($" {order.Id}|" +
                 $"{order.OrderPrice}|" +
                 $"{order.OrderDate}|" +
@@ -60,7 +60,7 @@ namespace QualityAssurance2.CMD.Menu.Controlers.Tables
                 $"{client.LastName}\n" +
                 $"Description: {order.Description}\n");
             }
-             
+
         }
     }
 }

@@ -3,27 +3,20 @@ using QualityAssurance2.CMD.Menu.Controlers.Tables;
 
 namespace QualityAssurance2.CMD.Menu.Controlers.MenuControllers
 {
-    public static class MainMenuController
+    public static class MainMenu
     {
         public static void MainMenuButtons()
         {
-
             ViewMainMenuInfo();
             string choice = ClickCheck();
             switch (choice)
             {
                 case "1":
-                    Console.Clear();
-                    List<Client> clients = ViewTables<Client>.GetFullTable();
-                    ViewTables<Client>.ViewTable(clients);
-                    TableMenuController<Client>.TableMenuButtons();
+                    MainMenuButtonController<Client>.MainMenuButtonReaction();
                     break;
 
                 case "2":
-                    Console.Clear();
-                    List<Order> orders = ViewTables<Order>.GetFullTable();
-                    ViewTables<Order>.ViewTable(orders);
-                    TableMenuController<Order>.TableMenuButtons();
+                    MainMenuButtonController<Order>.MainMenuButtonReaction();
                     break;
 
                 case "Escape":
